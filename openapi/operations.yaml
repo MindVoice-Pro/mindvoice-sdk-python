@@ -1,0 +1,130 @@
+# Публичные имена и описания операций Python SDK.
+GET /v1/workspaces:
+  name: list_workspaces
+  summary: Возвращает пространства, доступные ключу Workspace.
+GET /v1/workspaces/{workspace_id}/overview:
+  name: get_workspace_overview
+  summary: Возвращает общие сведения о пространстве.
+POST /v1/workspaces/{workspace_id}/recordings:
+  name: upload_recording
+  summary: Загружает аудиофайл в пространство.
+GET /v1/workspaces/{workspace_id}/recordings:
+  name: list_recordings
+  summary: Возвращает страницу аудиозаписей.
+POST /v1/workspaces/{workspace_id}/recordings/import:
+  name: import_recording
+  summary: Ставит импорт аудиозаписи по внешней ссылке в очередь.
+POST /v1/workspaces/{workspace_id}/recordings/{recording_id}/import/retry:
+  name: retry_recording_import
+  summary: Ставит повторную попытку импорта аудиозаписи в очередь.
+GET /v1/workspaces/{workspace_id}/recordings/{recording_id}:
+  name: get_recording
+  summary: Возвращает аудиозапись по идентификатору.
+PATCH /v1/workspaces/{workspace_id}/recordings/{recording_id}:
+  name: update_recording
+  summary: Изменяет пользовательские поля аудиозаписи по маске.
+DELETE /v1/workspaces/{workspace_id}/recordings/{recording_id}:
+  name: delete_recording
+  summary: Удаляет аудиозапись.
+POST /v1/workspaces/{workspace_id}/recordings/{recording_id}/annul:
+  name: annul_recording
+  summary: Аннулирует аудиозапись.
+GET /v1/workspaces/{workspace_id}/recordings/{recording_id}/download:
+  name: download_recording
+  summary: Возвращает поток исходного аудио.
+POST /v1/workspaces/{workspace_id}/recordings/{recording_id}/audio-analysis/retry:
+  name: retry_recording_audio_analysis
+  summary: Ставит повторный технический анализ аудиофайла в очередь.
+GET /v1/workspaces/{workspace_id}/transcription-scenarios:
+  name: list_transcription_scenarios
+  summary: Возвращает страницу сценариев транскрибации.
+GET /v1/workspaces/{workspace_id}/transcription-scenarios/{scenario_id}:
+  name: get_transcription_scenario
+  summary: Возвращает сценарий транскрибации.
+POST /v1/workspaces/{workspace_id}/transcription-scenarios/{scenario_id}/activation:
+  name: set_transcription_scenario_active
+  summary: Устанавливает состояние активности сценария транскрибации.
+POST /v1/workspaces/{workspace_id}/transcription-scenarios/{scenario_id}/executions:
+  name: start_transcription_scenario_execution
+  summary: Запускает обработку записей по сценарию транскрибации.
+GET /v1/workspaces/{workspace_id}/transcription-scenarios/{scenario_id}/executions:
+  name: list_transcription_scenario_executions
+  summary: Возвращает страницу запусков сценария транскрибации.
+POST /v1/workspaces/{workspace_id}/recordings/{recording_id}/transcription-runs:
+  name: start_transcription_run
+  summary: Запускает транскрибацию аудиозаписи.
+GET /v1/workspaces/{workspace_id}/transcription-runs:
+  name: list_transcription_runs
+  summary: Возвращает страницу запусков транскрибации.
+GET /v1/workspaces/{workspace_id}/transcription-runs/{run_id}:
+  name: get_transcription_run
+  summary: Возвращает запуск транскрибации по идентификатору.
+GET /v1/workspaces/{workspace_id}/recordings/{recording_id}/transcript:
+  name: get_recording_transcript
+  summary: Возвращает текст расшифровки аудиозаписи.
+GET /v1/workspaces/{workspace_id}/transcription-runs/{run_id}/transcript:
+  name: get_transcript
+  summary: Возвращает текст расшифровки указанного запуска.
+GET /v1/workspaces/{workspace_id}/transcription-runs/{run_id}/transcript/export:
+  name: export_transcript
+  summary: Возвращает поток файла с текстом расшифровки.
+POST /v1/workspaces/{workspace_id}/transcription-runs/{run_id}/retry:
+  name: retry_transcription_run
+  summary: Создаёт повторную попытку транскрибации.
+POST /v1/workspaces/{workspace_id}/transcription-runs/{run_id}/cancel:
+  name: cancel_transcription_run
+  summary: Отменяет запуск транскрибации.
+POST /v1/workspaces/{workspace_id}/transcription-runs/{run_id}/annul:
+  name: annul_transcription_run
+  summary: Аннулирует запуск транскрибации.
+GET /v1/workspaces/{workspace_id}/analysis-criteria:
+  name: search_analysis_criteria
+  summary: Ищет критерии анализа в пространстве.
+GET /v1/workspaces/{workspace_id}/analysis-scenarios:
+  name: list_analysis_scenarios
+  summary: Возвращает страницу сценариев анализа.
+GET /v1/workspaces/{workspace_id}/analysis-scenarios/{scenario_id}:
+  name: get_analysis_scenario
+  summary: Возвращает сценарий анализа.
+POST /v1/workspaces/{workspace_id}/analysis-scenarios/{scenario_id}/activation:
+  name: set_analysis_scenario_active
+  summary: Устанавливает состояние активности сценария анализа.
+POST /v1/workspaces/{workspace_id}/analysis-scenarios/{scenario_id}/executions:
+  name: start_analysis_scenario_execution
+  summary: Запускает обработку записей по сценарию анализа.
+GET /v1/workspaces/{workspace_id}/analysis-scenarios/{scenario_id}/executions:
+  name: list_analysis_scenario_executions
+  summary: Возвращает страницу запусков сценария анализа.
+POST /v1/workspaces/{workspace_id}/recordings/{recording_id}/analysis-runs:
+  name: start_analysis_run
+  summary: Запускает анализ аудиозаписи.
+GET /v1/workspaces/{workspace_id}/analysis-runs:
+  name: list_analysis_runs
+  summary: Возвращает страницу запусков анализа.
+GET /v1/workspaces/{workspace_id}/analysis-runs/{run_id}:
+  name: get_analysis_run
+  summary: Возвращает подробности запуска анализа.
+GET /v1/workspaces/{workspace_id}/analysis-results/{result_id}:
+  name: get_analysis_result
+  summary: Возвращает результат анализа по идентификатору результата.
+POST /v1/workspaces/{workspace_id}/analysis-runs/{run_id}/retry:
+  name: retry_analysis_run
+  summary: Создаёт повторную попытку анализа.
+POST /v1/workspaces/{workspace_id}/analysis-runs/{run_id}/annul:
+  name: annul_analysis_run
+  summary: Аннулирует запуск анализа.
+POST /v1/workspaces/{workspace_id}/analysis-runs/{run_id}/cancel:
+  name: cancel_analysis_run
+  summary: Отменяет запуск анализа.
+GET /v1/workspaces/{workspace_id}/recordings/{recording_id}/analysis-results/{analysis_run_id}:
+  name: get_recording_analysis_result
+  summary: Возвращает результат указанного запуска для аудиозаписи.
+GET /v1/workspaces/{workspace_id}/analysis-results:
+  name: list_analysis_results
+  summary: Возвращает страницу результатов анализа.
+GET /v1/workspaces/{workspace_id}/analysis-criterion-templates:
+  name: list_analysis_criterion_templates
+  summary: Возвращает каталог шаблонов критериев анализа.
+GET /v1/workspaces/{workspace_id}/analysis-criterion-templates/{template_id}/versions/{version}:
+  name: get_analysis_criterion_template_version
+  summary: Возвращает указанную редакцию шаблона критерия анализа.

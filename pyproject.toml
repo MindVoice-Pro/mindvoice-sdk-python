@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mindvoice-sdk"
+version = "0.1.0"
+description = "Клиент публичного API MindVoice для Python"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anyio>=4,<5",
+    "httpx>=0.28,<1",
+    "pydantic>=2.12,<3",
+    "typing-extensions>=4.12",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: Pydantic :: 2",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/MindVoice-Pro/mindvoice-sdk-python"
+Documentation = "https://developer.mindvoice.pro/"
+
+[dependency-groups]
+dev = [
+    "datamodel-code-generator==0.103.0",
+    "mypy>=1.18,<2",
+    "pytest>=8.4,<10",
+    "pyyaml>=6,<7",
+    "ruff==0.15.7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mindvoice"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/README.md", "/pyproject.toml", "/openapi", "/scripts", "/src", "/tests"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/mindvoice/models.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
