@@ -9,13 +9,14 @@
 
 ## Установка
 
-Из каталога репозитория:
+Установите пакет с PyPI.
 
 ```bash
-python -m pip install .
+python -m pip install mindvoice-sdk
 ```
 
 Имя дистрибутива — `mindvoice-sdk`, имя модуля — `mindvoice`.
+Для установки из исходников выполните `python -m pip install .` в каталоге репозитория.
 
 ## Первый запрос
 
