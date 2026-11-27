@@ -256,3 +256,34 @@ uv build
 В [operations.yaml](openapi/operations.yaml) закреплены публичные имена и
 описания методов. При добавлении или удалении маршрутов обновите этот
 файл, перегенерируйте SDK и проверьте diff.
+
+### Публикация на PyPI
+
+[Workflow публикации](.github/workflows/publish-pypi.yml) запускается после
+публикации GitHub Release. Он сверяет тег с версией пакета, запускает проверки,
+собирает wheel и архив исходников, затем загружает их на PyPI через Trusted
+Publishing (OIDC).
+
+Перед первым релизом владелец аккаунта PyPI добавляет ожидающего издателя
+(*pending publisher*) на странице [Publishing](https://pypi.org/manage/account/publishing/).
+В разделе GitHub Actions укажите:
+
+| Поле | Значение |
+| --- | --- |
+| PyPI Project Name | `mindvoice-sdk` |
+| Owner | `MindVoice-Pro` |
+| Repository name | `mindvoice-sdk-python` |
+| Workflow name | `publish-pypi.yml` |
+| Environment name | `pypi` |
+
+PyPI создаст проект при первом успешном запуске. Если проект уже существует,
+его владелец добавляет издателя с теми же параметрами в разделе **Manage →
+Publishing** проекта. Для OIDC достаточно этой привязки, секрет с API-токеном
+PyPI не требуется. [Настройка первого издателя на PyPI](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
+
+1. Укажите версию в `pyproject.toml` и обновите `uv.lock` командой `uv lock`.
+2. Опубликуйте GitHub Release с тегом вида `v0.1.0` на коммите с этой версией
+   пакета и файлом workflow. Для предварительного релиза используйте версию
+   PEP 440, например `0.2.0rc1`, и тег `v0.2.0rc1`.
+3. Проверьте запуск в **Actions**. После успешной публикации пакет доступен
+   для установки командой `python -m pip install mindvoice-sdk`.
